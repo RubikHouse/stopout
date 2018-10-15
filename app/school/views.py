@@ -1,5 +1,3 @@
-# fbc(function-based view)
-
 from django.shortcuts import render
 
 from .models import *
@@ -16,8 +14,10 @@ def school_list(request):
 
 def school_detail(request, pk):
     school = School.objects.get(id=pk)
+    students = Student.objects.close_friends()
     context = {
         'school': school,
+        'students': students,
     }
     return render(request, 'school/school_detail.html', context)
 
@@ -32,8 +32,10 @@ def student_list(request):
 
 
 def student_detail(request, pk):
-    student = School.objects.get(id=pk)
+    student = Student.objects.get(id=pk)
+    friends = Student.objects.close_friends
     context = {
         'student': student,
+        'friends': friends,
     }
     return render(request, 'school/student_detail.html', context)

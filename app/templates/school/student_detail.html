@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<!--URL이름으로 student_id를 사용, 해당 학생의 정보를 출력-->
+<!--각 학생의 친구 목록을 출력해준다-->
+{% extends 'base.html' %}
+{% block content %}
+	{% for student in students %}
+	<div class="card mb-2">
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{% url 'student-detail' pk=student.pk %}">[{{ student.pk }}] {{ student.name }}</a>
+			</h5>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}

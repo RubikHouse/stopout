@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from school import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('school.urls')),
-    path(r'^schools/$',
-        include('school.urls')),
-    path(r'^students/$',
-         include('school.urls')),
-    path('school_id/', include('school.urls')),
-    path('student_id/', include('school.urls')),
+    path('schools/', views.school_list, name='school-list'),
+    path('students/', views.student_list, name='student-list'),
+    path('schools/<int:pk>/', views.school_detail, name='school-detail'),
+    path('students/<int:pk>/', views.student_detail, name='student-detail'),
+
 ]

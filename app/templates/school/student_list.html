@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<!--모든 학생 목록을 출력-->
+<!--각 학생이 다니는 학교도 함께 출력해준다-->
+<!--학생 상세보기로의 링크 구현-->
+{% extends 'base.html' %}
+{% block content %}
+	{% for student in students %}
+	<div class="card mb-2">
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{% url 'student-detail' pk=student.pk %}">[{{ student.pk }}] {{ student.name }}</a>
+			</h5>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}

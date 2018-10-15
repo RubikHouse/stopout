@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    {% for student in students %}
+	<div class="card mb-2">
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{% url 'student-detail' pk=student.pk %}">[{{ student.pk }}] {{ student.name }}</a>
+			</h5>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}
