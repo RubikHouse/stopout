@@ -1,0 +1,18 @@
+<!--학교 목록-->
+<!--모든 학교 목록을 출력-->
+<!--학교 상세보기로의 링크 구현-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+	{% for school in schools %}
+	<div class="card mb-2">
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{% url 'school-detail' pk=school.pk %}">[{{ school.pk }}] {{ school.name }}</a>
+			</h5>
+		</div>
+	</div>
+	{% endfor %}
+
+{% endblock %}
